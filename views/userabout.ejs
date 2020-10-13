@@ -1,0 +1,214 @@
+ <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>About Page</title>
+             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
+                    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+            <link rel="stylesheet" href="/index.css">
+            <link rel="stylesheet" href="/profile.css">
+              <link rel="stylesheet" href="/userabout.css">
+
+
+    </head>
+     <body id="post-selector">
+
+    <nav class="navbar sticky-top navbar-expand-md navbar-light nav-bg navbar-shadow">
+                 <a class="navbar-brand heading" href="/posts"><span style="color:black">Dank</span ><span id="cloudd">Cloud</span></a>
+                 <button class="navbar-toggler dots" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+             <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                     </svg>
+                </span>
+            </button>
+
+          <div class="collapse navbar-collapse " id="navbarSupportedContent">
+
+            <ul class="navbar-nav ml-auto ff">
+
+              <li class="nav-item">
+                <a  href="/logout"><div class="logoutbutton position">Logout</div></a>
+              </li>
+              <li class="nav-item dropdown">
+               <a class=" dropdown-toggle my-dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                  <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 0 0 .014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 0 0 .022.004zm9.974.056v-.002.002zM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        </svg>
+
+                </a>
+                <div class="dropdown-menu dm" aria-labelledby="navbarDropdown">
+
+                  <a class="dropdown-item" href="#">Dark mode</a>
+                </div>
+              </li>
+
+            </ul>
+
+          </div>
+    </nav>
+
+
+     <div class="cover-background">
+            <div class="container cover">
+
+                <div  class="cover-image" ></div>
+                 <div class="  cover-title" ><div class="dank">Dank</div><div class="cloud">Cloud</div></div>
+                 <div class="the-image-container">
+                    <div class="the-image-div">
+                       <% if(profileuser.avatar==""){ %>
+                         <img class="the-image" src="/nouser.png">
+                        <% }
+                         else
+                         {%>
+                             <img class="the-image" src=<%= profileuser.avatar %> style="border:2px solid white">
+                      <%   } %>
+                    </div>
+                 </div>
+
+
+            </div>
+        </div>
+
+        <div class="container initial-details">
+            <div class="profile-username">Username : @<%=profileuser.username%></div>
+            <div class="profile-username">Full name : <%=profileuser.firstname%> <%=profileuser.lastname%></div>
+         </div>
+         <div class="container divider">
+             <div class="dropdown-divider" style="border-color:#909497"></div>
+         </div>
+         <div class="container navigation">
+                <div><form action="/profile/<%= profileuser._id %>" method="GET"><button  class="timeline">Timeline</button></form><div class="dropdown-divider divider-selector"  ></div></div>
+                <div><form action="/profile/<%= profileuser._id %>/about" method="GET"><button  class="about" style="color:#09B7D0">About</button></form><div class="dropdown-divider divider-selector" style="border-color:#09B7D0 " ></div></div>
+                 <%if(currentuser._id.toString()==profileuser._id.toString()){%>
+                <div ><form action="/profile/<%= profileuser._id %>/edit" method="GET"><button  class="edit" >Edit</button></form><div class="dropdown-divider divider-selector" ></div></div>
+                <% } %>
+         </div>
+
+
+
+
+        <div class="container about-div">
+
+          <div class="flexxyy">
+            <div class="bio-div">
+                <div class="image-div"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg></div>
+                <div class="info">
+                    <div class="data"><%= profileuser.bio %></div>
+                    <div class="detail">Bio</div>
+                </div>
+            </div>
+
+             <div class="dropdown-divider" style="border-color:#909497"></div>
+
+             <div class="phone-div">
+                <div class="image-div"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-telephone-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                      <path fill-rule="evenodd" d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z"/>
+                </svg></div>
+                <div class="info">
+                    <div class="data"><%= profileuser.phone %></div>
+                    <div class="detail">Mobile</div>
+                </div>
+            </div>
+
+             <div class="dropdown-divider" style="border-color:#909497"></div>
+
+            <div class="respect-div">
+                <div class="image-div"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                  <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                </svg></div>
+                <div class="info">
+                   <% if(Number.isNaN(respect)){%>
+                    <div class="data">0</div>
+                    <%}else{%>
+                     <div class="data"><%= respect %></div>
+                    <%}%>
+                    <div class="detail">Respect Lvl</div>
+                </div>
+            </div>
+
+             <div class="dropdown-divider" style="border-color:#909497"></div>
+
+            <div class="email-div">
+                <div class="image-div"><img src="/mail.png" style="width:2em;height:2em"></div>
+                <div class="info">
+                    <div class="data"><%= profileuser.email %></div>
+                    <div class="detail">email</div>
+                </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                 crossorigin="anonymous"></script>
+           <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                    crossorigin="anonymous"></script>
+           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+                    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+                    crossorigin="anonymous"></script>
+
+
+
+                        <script
+		  src="https://code.jquery.com/jquery-3.1.1.min.js"
+		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		  crossorigin="anonymous"></script>
+	  <!-- Bootstrap CDN -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="/ajax.js"></script>
+		<script src="/toggle.js"></script>
+
+    </body>
+    </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

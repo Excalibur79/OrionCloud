@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+
+             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+         <link rel="stylesheet" href="/new.css">
+
+
+
+
+
+
+
+	<title>Form</title>
+</head>
+
+<body>
+
+  <nav class="navbar sticky-top navbar-expand-md navbar-light nav-bg navbar-shadow">
+  <a class="navbar-brand heading" href="/posts"><span style="color:black">Dank</span ><span id="cloudd">Cloud</span></a>
+  <button class="navbar-toggler dots" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+</svg>
+    </span>
+  </button>
+
+  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+   <form class="searchform" action="/posts/search" method="GET" >
+
+              <input class=" mr-sm-2 search"  name="search" placeholder="Smart Search" >
+
+    </form>
+    <ul class="navbar-nav ml-auto">
+      <% if(!currentuser){%>
+      <li class="nav-item active">
+        <a  href="/login"><div class="loginbutton">Login</div> <span class="sr-only">(current)</span></a>
+      </li>
+      <%}if(currentuser){%>
+      <li class="nav-item">
+        <a  href="/logout"><div class="logoutbutton">Logout</div></a>
+      </li>
+      <%}%>
+      <li class="nav-item dropdown">
+       <a class=" dropdown-toggle my-dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+          <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 0 0 .014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 0 0 .022.004zm9.974.056v-.002.002zM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+</svg>
+
+        </a>
+        <div class="dropdown-menu dm" aria-labelledby="navbarDropdown">
+
+          <%if(currentuser){%>
+
+          <a class="dropdown-item" href="/profile/<%=currentuser._id%>">Profile</a>
+          <%}%>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Dark mode</a>
+        </div>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+
+
+
+
+
+
+    <%  if(errormessage && errormessage.length>0){%>
+         <div class="error-flash container">
+            <%=errormessage%>
+         </div>
+     <%}%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<hr>
+	<div class="container my-container">
+	    <%=typeof message != 'undefined' ? message : ''%>
+		<form action="/postones" method="POST" enctype="multipart/form-data">
+
+			<div class="flexbox">
+				<div><label for="desc"><span>Create your Post </span></label></div>
+				<div><textarea  name="desc" placeholder="Description" class="my-textarea" ></textarea></div>
+
+			</div>
+			<div class="flexbox2">
+				  <div>
+                      <label for="image" class="custom-file-upload">Select Image</label>
+                      <input type="file" id="image" name="image" accept="image/*" style="display:none" required >
+                  </div>
+			</div>
+			 <div class="dropdown-divider divider-style" ></div>
+
+            <div class="centered-tags">
+                    <div><span>Select Catagories</span></div>
+                    <div class="container flexbox3">
+                        <div>
+                            <input type="checkbox" id="meme"  name="type1" value="meme" hidden>
+                            <label for="meme" class="innerx"  id="memes"> Meme</label><br>
+                        </div>
+
+                         <div>
+                            <input type="checkbox" id="poem"  name="type2" value="poem" hidden>
+                            <label for="poem" class="innerx" id="poems">Poem</label><br>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="scenery"  name="type3" value="scenery" hidden>
+                            <label for="scenery" class="innerx" id="seneries"> Scenery</label><br>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="memory"  name="type4" value="memory" hidden>
+                            <label for="memory" class="innerx" id="memories">Memories</label><br>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="status"  name="type5" value="status" hidden>
+                            <label for="status" class="innerx" id="statuses">Status</label><br>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="fact"  name="type6" value="fact" hidden>
+                            <label for="fact" class="innerx" id="facts">Fact</label><br>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="gaming"  name="type7" value="gaming" hidden>
+                            <label for="gaming" class="innerx" id="gamings">Gaming</label><br>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="anime"  name="type8" value="anime" hidden>
+                            <label for="anime" class="innerx" id="animes">Anime</label><br>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="movie"  name="type9" value="movie" hidden>
+                            <label for="movie" class="innerx" id="movies">Movie</label><br>
+                        </div>
+
+                    </div>
+            </div>
+             <div class="dropdown-divider divider-style" ></div>
+
+            <div><span>Create Custom Tags</span></div>
+            <div class="flexbox4">
+                <div class="custom-tags">
+                     <div class="tags">Tag 1 : </div>
+                     <div class="custom-tag-input"><input name="type10" class="input-style" type="text" placeholder=" "></div>
+                </div>
+
+                <div class="custom-tags">
+                  <div class="tags">Tag 2 : </div>
+                  <div class="custom-tag-input"><input name="type11" class="input-style" type="text" placeholder=" "></div>
+                </div>
+
+                <div class="custom-tags">
+                     <div class="tags">Tag 3 : </div>
+                     <div class="custom-tag-input"><input name="type12" class="input-style" type="text" placeholder=" "></div>
+                </div>
+            </div>
+
+
+			<div class="postone-post-button">
+				<button class="my-button" type="submit">Publish</button>
+			</div>
+		</form>
+	</div>
+
+	<hr>
+
+
+
+
+
+           <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                 crossorigin="anonymous"></script>
+           <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                    crossorigin="anonymous"></script>
+           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+                    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+                    crossorigin="anonymous"></script>
+
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+                    <script src="/ajax.js"></script>
+                    <script src="/toggle.js"></script>
+</body>
+
+</html>

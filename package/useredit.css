@@ -1,0 +1,260 @@
+.edit-user-form
+{
+  /*  border:2px solid red;*/
+
+   display:flex;
+   justify-content:center;
+}
+.flex-edit-form
+{
+    display:flex;
+  /*   border:2px solid blue;*/
+    flex-direction:column;
+    border:1px solid #CACFD2 ;
+    border-radius:10px;
+    width:406px;
+    height:400px;
+    padding-top:10px;
+    padding-left:40px;
+    padding-right:40px;
+    background-color:white;
+    padding-bottom:10px;
+    justify-content:space-around;
+    margin-top:20px;
+    transition:all 0.3s ease;
+}
+.flex-edit-form:hover
+{
+    border:1px solid #909497  ;
+     box-shadow:2px 2px 5px #909497;
+}
+.flex-edit-form div
+{
+    flex:1;
+  /*border:2px dotted black;*/
+
+
+    margin:0px;
+}
+
+
+#phone-input
+{
+     background: rgba(33, 47, 61, 0);
+    margin-top:0px;
+    height:60px;
+    border-top:0px;
+    border-right:0px;
+    border-left:0px;
+    padding-top:27px;
+    padding-left:5px;
+    border-color:white;
+    border:none;
+    width:100%;
+    outline:none;
+    color:black;
+    /*border:2px solid green;*/
+
+
+}
+#bio-input
+{
+     background: rgba(33, 47, 61, 0);
+    margin-top:0px;
+    height:60px;
+    border-top:0px;
+    border-right:0px;
+    border-left:0px;
+    padding-top:27px;
+    padding-left:5px;
+    border-color:white;
+    border:none;
+    width:100%;
+    outline:none;
+    color:black;
+   /* border:2px solid green;*/
+
+}
+.my-form-content
+{
+    overflow:hidden;
+}
+.my-form-content label
+{
+
+border-bottom:1px solid black;
+position:relative;
+top:-64px;
+width:100%;
+height:65%;
+pointer-events:none;
+color:black;
+    font-family: 'Nunito', sans-serif;
+font-size:105%;
+}
+
+.my-form-content label::after
+{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+border-bottom:3px solid #09B7D0 ;
+bottom:-1px;
+transform:translate(-100%);
+transition:all 0.4s ease;
+
+}
+.content-name
+{
+position:absolute;
+top:35px;
+transition: all 0.4s ease;
+}
+
+#edit-phone input:focus + .label-name .content-name,
+#edit-phone input:not(:placeholder-shown) + .label-name .content-name
+{
+    transform:translateY(-140%);
+    font-size:14px;
+    color:#09B7D0 ;
+
+}
+    #edit-phone input:focus + .label-name::after,
+    #edit-phone input:not(:placeholder-shown) + .label-name::after
+    {
+        transform:translateX(0%);
+    }
+
+#edit-bio input:focus + .label-name .content-name,
+#edit-bio input:not(:placeholder-shown) + .label-name .content-name
+{
+    transform:translateY(-140%);
+    font-size:14px;
+    color:#09B7D0 ;
+
+}
+    #edit-bio input:focus + .label-name::after,
+    #edit-bio input:not(:placeholder-shown) + .label-name::after
+    {
+        transform:translateX(0%);
+    }
+
+
+
+#profile-file-upload
+{
+     padding:1px 12px;
+    cursor:pointer;
+    position:relative;
+    width:100%;
+     border:3px solid #09B7D0  ;
+    background-color:#09B7D0;
+    color:white;
+    text-align:center;
+    font-family: 'Nunito', sans-serif;
+    border-radius:2px;
+      transition:all 0.4s ease;
+}
+
+
+
+.update-profile-button
+{
+
+
+    padding:6px 15px;
+    cursor:pointer;
+
+    top:1px;
+
+
+
+
+     border:3px solid #09B7D0  ;
+    background-color:#09B7D0;
+    color:white;
+
+
+
+    text-align:center;
+
+    font-family: 'Nunito', sans-serif;
+    border-radius:20px;
+
+      transition:all 0.4s ease;
+}
+
+.update-profile-button:hover
+{
+      background-color:white ;
+    color:#09B7D0;
+}
+.update-profile-button:focus
+{
+      background-color:white ;
+    color:#09B7D0;
+    outline:none;
+}
+
+
+.update-profile-button:active
+{
+    background-color:#09B7D0 ;
+    color:white;
+    outline:none;
+}
+
+.button-flex
+{
+    text-align:center;
+}
+
+
+.error-flash
+{
+     border:0.5px solid #E74C3C ;
+    width:640px;
+   padding:10px;
+   margin-top:10px;
+
+   background-color:#FADBD8  ;
+   border-radius:6px;
+   color:#E74C3C  ;
+   transition:all 0.3s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:452px)
+{
+    .flex-edit-form
+    {
+        width:auto;
+        padding-left:50px;
+        padding-right:50px;
+
+
+    }
+
+
+
+}
+
+@media(max-width:572px)
+{
+      .error-flash
+    {
+        width:90%;
+    }
+}

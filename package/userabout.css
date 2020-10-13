@@ -1,0 +1,55 @@
+.about-div
+{
+  /* border:2px solid red;*/
+
+    display:flex;
+
+    justify-content:center;
+
+}
+.flexxyy
+{
+  /*border:2px solid black;*/
+  margin-top:20px;
+
+}
+.bio-div,.phone-div,.respect-div,.email-div
+{
+    /*border:2px dotted blue;*/
+    display:flex;
+    margin:10px;
+    padding-left:10px;
+    padding-right:10px;
+}
+.image-div
+{
+   /* border:2px solid red;*/
+    margin:2px;
+    padding:3px;
+
+}
+.info
+{
+    /*border:2px solid black;*/
+     margin:2px;
+}
+.data
+{
+   /* border:2px dotted green;*/
+     margin:2px;
+     font-size:140%;
+     font-family: 'Poppins', sans-serif;
+}
+.detail
+{
+    /*border:2px solid brown;*/
+     margin:2px;
+     color:#797D7F;
+}
+@media(max-width:414px)
+{
+    .data
+    {
+        font-size:120%;
+    }
+}

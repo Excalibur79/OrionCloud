@@ -1,0 +1,453 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Profile Page</title>
+             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
+                    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+            <link rel="stylesheet" href="/index.css">
+            <link rel="stylesheet" href="/profile.css">
+
+    </head>
+
+                                         <div class="loader"></div>
+    <body id="post-selector">
+
+    <nav class="navbar sticky-top navbar-expand-md navbar-light nav-bg navbar-shadow">
+                 <a class="navbar-brand heading" href="/posts"><span style="color:black">Dank</span ><span id="cloudd">Cloud</span></a>
+                 <button class="navbar-toggler dots" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+             <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                     </svg>
+                </span>
+            </button>
+
+          <div class="collapse navbar-collapse " id="navbarSupportedContent">
+
+            <ul class="navbar-nav ml-auto ff">
+
+              <li class="nav-item">
+                <a  href="/logout"><div class="logoutbutton position">Logout</div></a>
+              </li>
+              <li class="nav-item dropdown">
+               <a class=" dropdown-toggle my-dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                  <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 0 0 .014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 0 0 .022.004zm9.974.056v-.002.002zM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        </svg>
+
+                </a>
+                <div class="dropdown-menu dm" aria-labelledby="navbarDropdown">
+
+                  <a class="dropdown-item" href="#">Dark mode</a>
+                </div>
+              </li>
+
+            </ul>
+
+          </div>
+    </nav>
+
+
+        <div class="cover-background">
+            <div class="container cover">
+
+                <div  class="cover-image" ></div>
+                 <div class="  cover-title" ><div class="dank">Dank</div><div class="cloud">Cloud</div></div>
+                 <div class="the-image-container">
+                    <div class="the-image-div">
+                       <% if(profileuser.avatar==""){ %>
+                         <img class="the-image" src="/nouser.png">
+                        <% }
+                         else
+                         {%>
+                             <img class="the-image" src=<%= profileuser.avatar %> style="border:2px solid white">
+                      <%   } %>
+                    </div>
+                 </div>
+
+
+            </div>
+        </div>
+
+        <div class="container initial-details">
+            <div class="profile-username">Username : @<%=profileuser.username%></div>
+            <div class="profile-username">Full name : <%=profileuser.firstname%> <%=profileuser.lastname%></div>
+         </div>
+         <div class="container divider">
+             <div class="dropdown-divider" style="border-color:#909497"></div>
+         </div>
+         <div class="container navigation">
+                <div><form action="/profile/<%= profileuser._id %>" method="GET"><button  class="timeline" style="color:#09B7D0">Timeline</button></form><div class="dropdown-divider divider-selector" style="border-color:#09B7D0  "></div></div>
+                <div><form action="/profile/<%= profileuser._id %>/about" method="GET"><button  class="about">About</button></form><div class="dropdown-divider divider-selector" ></div></div>
+                 <%if(currentuser._id.toString()==profileuser._id.toString()){%>
+                <div ><form action="/profile/<%= profileuser._id %>/edit" method="GET"><button  class="edit">Edit</button></form><div class="dropdown-divider divider-selector" ></div></div>
+                <%}%>
+         </div>
+
+
+ <%if(currentuser._id.toString()==profileuser._id.toString()){%>
+<div class="postform container">
+    <form  action="/posttwos" method="POST">
+        <div class="container posttwo">
+              <% if(currentuser && currentuser["avatar"]!="")
+               {%>
+                <div class="my-photo"><img class="thumbnail-image" src="<%=currentuser["avatar"]%>"></div>
+                <%} else{ %>
+                 <div class="my-photo"></div>
+                <%}%>
+               <% if(currentuser){%>
+                <textarea class="my-textarea" name="desc" type="text" placeholder="Wanna make a post? <%=currentuser.firstname%>"></textarea>
+               <% }else{%>
+                 <textarea class="my-textarea" name="desc" type="text" placeholder="Wanna make a post?"></textarea>
+               <% }%>
+
+                <div class="gallery-photo-div"><a href="/postones/new"><img class="gallery-photo" src="/gallerypic.png"></a></div>
+        </div>
+        <div class="container posttwocatagories">
+                        <div class="fadein">
+                            <input type="checkbox" id="poem"  name="type1" value="poem" hidden>
+                            <label for="poem" class="inner"  id="poems">Poem</label>
+                        </div>
+                        <div class="fadein">
+                            <input type="checkbox" id="movie"  name="type2" value="movie" hidden>
+                            <label for="movie" class="inner" id="movies">movie</label>
+                        </div>
+                        <div class="fadein">
+                            <input type="checkbox" id="anime"  name="type3" value="anime" hidden>
+                            <label for="anime" class="inner" id="animes">anime</label>
+                        </div>
+                         <div class="fadein">
+                            <input type="checkbox" id="status"  name="type4" value="status" hidden>
+                            <label for="status" class="inner" id="statuses">Status</label>
+                        </div>
+                         <div class="fadein">
+                            <input type="checkbox" id="memory"  name="type5" value="memory" hidden>
+                            <label for="memory" class="inner" id="memories">Memories</label>
+                        </div>
+                         <div class="fadein">
+                            <input type="checkbox" id="fact"  name="type6" value="fact" hidden>
+                            <label for="fact" class="inner" id="facts">Fact</label>
+                        </div>
+                         <div class="fadein">
+                            <input type="checkbox" id="gaming"  name="type7" value="gaming" hidden>
+                            <label for="gaming" class="inner" id="gamings">Gaming</label>
+                        </div>
+
+
+        </div>
+        <div class="down"></div>
+        <div class="select-catagory">Select Catagory</div>
+          <div class="dropdown-divider my-divider" ></div>
+        <button class="postbutton" >Post</button>
+    </form>
+</div>
+<%}%>
+
+
+
+
+
+
+
+
+
+<div >
+    <div>
+        <% posttwos.forEach(function(posttwo){ %>
+            <div  class="container postone-container-div">
+                <div class="postone-header">
+                    <div class="part1">
+                         <%if(posttwo["author"]["avatar"]==""){%>
+                            <img class="header-image" src="/nouser.png">
+                        <% }else{%>
+                          <img class="header-image" src="<%=posttwo["author"]["avatar"]%>">
+                         <%}%>
+
+                    </div>
+                    <div class="part2">
+                           <%=posttwo["author"]["username"]%>
+                    </div>
+                    <%if(currentuser._id.toString()==profileuser._id.toString()){%>
+                     <div class="part3">
+                          <form action="/posttwo/<%= posttwo._id %>/delete" method="POST">
+                             <button class="delete-button"></button>
+                          </form>
+                     </div>
+                    <% } %>
+                </div>
+                <div class="postone-description-div">
+                  <div><span class="description-style"><%= posttwo.description %>. </span><div class="postone-onetag"><span><%=posttwo["tags"][0]["name"]%></span></div></div>
+
+                </div>
+                <div class="postone-counters">
+                      <div class="postone-like-counter" id="<%= posttwo._id %>likeposttwo"><%= posttwo["likes"].length %> appreciates</div>
+                      <div class="postone-comment-counter"><%= posttwo["comments"].length %> comments</div>
+                </div>
+
+                  <div class="dropdown-divider my-divider" ></div>
+                        <div class="postone-feedbacks">
+                             <div class="postone-like-feedback">
+                               <% if(currentuser)
+                                {%>
+                                   <form class="posttwo-like-form" action="/posttwo/<%= posttwo._id %>/likes" method="POST" data-postid="<%= posttwo._id %>" data-clicked="false">
+                                        <input type="text" name="like[id]" value="<%= currentuser._id %>" style="display:none">
+                                         <% var found=0;
+                                        for(var x=0;x< posttwo["likes"].length;x++)
+                                        {
+                                            if(currentuser._id.toString()==posttwo["likes"][x]["id"])
+                                            {
+                                                found=1;
+
+                                                break;
+                                            }
+                                        }
+                                        if(found==1)
+                                        {  %>
+                                        <button class="clicked"></button>
+                                              <% }
+                                       else if(found==0)
+                                        { %>
+                                            <button class="unclicked"></button>
+                                      <%  } %>
+
+                                   </form>
+                               <% }else
+                                { %>
+                               <div class="disabled"> <button class="unclicked"></button></div>
+                           <%}%>
+                            </div>
+                            <div class="postone-comment-feedback"><button class="comment-image"></button></div>
+                            <div class="postone-share-feedback"><button class="share-image"></div>
+                        </div>
+                             <div class="dropdown-divider my-divider" ></div>
+                      <% if(currentuser){%>
+
+                     <form class="posttwo-comment-form" action="/posttwo/<%= posttwo._id %>/comments" method="POST" data-postid="<%= posttwo._id %>">
+                        <div class="postone-my-comment">
+                                   <% if(currentuser && currentuser["avatar"]!=""){ %>
+                                    <div class="my-comment-photo"><img class="my-image-position" src="<%=currentuser["avatar"]%>"></div>
+                                   <% }else{ %>
+                                     <div class="my-comment-photo"></div>
+                                   <% } %>
+                                   <input type="text" name="comment[avatar]" value="<%= currentuser.avatar %>" style="display:none">
+                                    <input type="text" name="comment[postid]" value="<%= posttwo._id %>" style="display:none">
+                                     <input type="text" name="comment[author]" value="<%= currentuser.username %>" style="display:none">
+                                     <input type="text" name="comment[userid]" value="<%= currentuser._id %>" style="display:none">
+                                    <div class="my-comment-input"><input type="text" name="comment[text]" class="posttwo-text" placeholder="Write a comment"></div>
+                                    <button class="send-button"><img src="/sendicon.png"></button>
+                         </div>
+                     </form>
+                     <%}%>
+                       <div class="postone-comment-section">
+
+                           <div id="<%=posttwo._id%>">
+                         <% posttwo["comments"].forEach(function(commentx){ %>
+                                <div class="posttwo-comment">
+                                    <% if(commentx["avatar"]!=""){ %>
+                                     <div class="others-comment-photo"><div class="my-comment-photo "><img class="thumbnail-image" src="<%=commentx["avatar"]%>"></div></div>
+                                  <%   }else{ %>
+                                      <div class="others-comment-photo"><div class="my-comment-photo "></div></div>
+                                   <%  } %>
+                                     <div class="whole-comment"><div class="author-name"><%=commentx["author"]%></div><div class="comment-text"><%=commentx["text"]%></div></div>
+                                     <% if(currentuser && currentuser._id.toString()==commentx.userid){ %>
+                                     <div class="comment-delete">
+                                          <form class="posttwo-comment-delete-form" action="/posttwo/comments/<%=commentx._id%>/delete" method="POST">
+                                             <button class="comment-delete-button"></button>
+                                          </form>
+                                     </div>
+                                     <%}%>
+
+                                </div>
+                          <% }); %>
+                       </div>
+                       </div>
+
+
+
+
+
+
+
+
+            </div>
+        <% }); %>
+    </div>
+
+
+
+
+
+    <div class="ajax-postone-data">
+		<% postones.forEach(function(postone){ %>
+                <div class="container postone-container-div">
+                    <div>
+                       <div class="postone-header">
+                              <div class="part1">
+                                    <%if(postone["author"]["avatar"]==""){%>
+                                            <img class="header-image" src="/nouser.png">
+                                        <% }else{%>
+                                          <img class="header-image" src="<%=postone["author"]["avatar"]%>">
+                                      <%}%>
+
+                              </div>
+                              <div class="part2">
+                                        <%=postone["author"]["username"]%>
+                              </div>
+                              <%if(currentuser._id.toString()==profileuser._id.toString()){%>
+                              <div class="part3">
+                                    <form action="/postone/<%= postone._id %>/delete" method="POST">
+                                       <button class="delete-button"></button>
+                                    </form>
+                              </div>
+                              <%}%>
+                       </div>
+                       <div class="postone-description-div">
+                            <div><span class="description-style"><%= postone.description %>. </span><div class="postone-onetag"><span><%=postone["tags"][0]["name"]%></span></div></div>
+                        </div>
+                       <div class="postone-image">
+                             <img src="<%= postone.image %>">
+                       </div>
+                        <div class="postone-counters">
+                            <div class="postone-like-counter" id="<%= postone._id %>likepostone"><%= postone["likes"].length %> appreciates</div>
+                            <div class="postone-comment-counter"> <%= postone["comments"].length %> comments</div>
+                        </div>
+                         <div class="dropdown-divider my-divider" ></div>
+                        <div class="postone-feedbacks">
+                            <div class="postone-like-feedback">
+                           <% if(currentuser)
+                            {%>
+                               <form class="postone-like-form" action="/postone/<%= postone._id %>/likes" method="POST"  data-postid="<%= postone._id %>">
+                                    <input type="text" name="like[id]" value="<%= currentuser._id %>" style="display:none">
+                                   <% var found=0;
+                                    for(var x=0;x< postone["likes"].length;x++)
+                                    {
+                                        if(currentuser._id.toString()==postone["likes"][x]["id"])
+                                        {
+                                            found=1;
+
+                                            break;
+                                        }
+                                    }
+                                    if(found==1)
+                                    {  %>
+                                     <button class="clicked"></button>
+                                   <% }
+                                   else if(found==0)
+                                    { %>
+                                        <button class="unclicked"></button>
+                                  <%  } %>
+
+                               </form>
+                           <% } else
+                           { %>
+                               <div class="disabled"> <button class="unclicked"></button></div>
+                           <%}%>
+                            </div>
+                            <div class="postone-comment-feedback"> <button class="comment-image"></button></div>
+                            <div class="postone-share-feedback"><button class="share-image"></div>
+                        </div>
+                         <div class="dropdown-divider my-divider" ></div>
+
+                               <%if(currentuser){%>
+
+                               <form class="postone-comment-form" action="/postone/<%= postone._id %>/comments" method="POST" data-postid="<%= postone._id %>" >
+                                  <div class="postone-my-comment">
+                                    <% if(currentuser && currentuser["avatar"]!=""){ %>
+                                    <div class="my-comment-photo"><img class="my-image-position" src="<%=currentuser["avatar"]%>"></div>
+                                   <% }else{ %>
+                                     <div class="my-comment-photo"></div>
+                                   <% } %>
+                                    <input type="text" name="comment[postid]" value="<%= postone._id %>" style="display:none">
+                                    <input type="text" name="comment[author]" value="<%= currentuser.username %>" style="display:none">
+                                       <input type="text" name="comment[avatar]" value="<%= currentuser.avatar %>" style="display:none">
+                                    <div class="my-comment-input"><input type="text" class="postone-text" name="comment[text]" placeholder="Write a comment"></div>
+                                    <input type="text" name="comment[userid]" value="<%= currentuser._id %>" style="display:none">
+                                  <button class="send-button"><img src="/sendicon.png"></button>
+                                  </div>
+                              </form>
+                                 <%}%>
+
+                         <div class="postone-comment-section">
+
+                           </div>
+                            <div id="<%=postone._id%>">
+                             <% postone["comments"].forEach(function(comment){ %>
+                                <div class="postone-comment">
+                                   <% if(comment["avatar"]!=""){%>
+                                     <div class="others-comment-photo"><div class="my-comment-photo "><img class="thumbnail-image"  src="<%=comment["avatar"]%>"></div></div>
+                                    <% }
+                                     else{%>
+                                      <div class="others-comment-photo"><div class="my-comment-photo "></div></div>
+                                     <% }%>
+                                     <div class="whole-comment"><div class="author-name"><%=comment["author"]%></div><div class="comment-text"><%=comment["text"]%></div></div>
+                                      <% if(currentuser && currentuser._id.toString()==comment.userid){ %>
+                                     <div class="comment-delete">
+                                          <form class="postone-comment-delete-form" action="/postone/comments/<%=comment._id%>/delete" method="POST">
+                                             <button class="comment-delete-button"></button>
+                                          </form>
+                                     </div>
+                                     <%}%>
+                                </div>
+                             <% }); %>
+                             </div>
+                         </div>
+
+
+
+
+
+
+                    </div>
+                </div>
+		<% });%>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                 crossorigin="anonymous"></script>
+           <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                    crossorigin="anonymous"></script>
+           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+                    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+                    crossorigin="anonymous"></script>
+
+
+
+                        <script
+		  src="https://code.jquery.com/jquery-3.1.1.min.js"
+		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		  crossorigin="anonymous"></script>
+	  <!-- Bootstrap CDN -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="/ajax.js"></script>
+		<script src="/toggle.js"></script>
+		<script src="/loader.js"></script>
+
+
+
+
+    </body>
+    </html>

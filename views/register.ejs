@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Page</title>
+
+         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="/register.css">
+
+</head>
+<body >
+
+
+                              <div class="loader"></div>
+
+          <%  if(message && message.length>0){%>
+             <div class="register-flash container">
+                <%=message%>
+             </div>
+             <%}%>
+
+
+
+
+
+
+
+    <div class="container my-container">
+        <form  action="/register" method="POST">
+        <div class="flexbox">
+            <div id="login-title"><span class="dank" >Dank</span><span class="cloud">Cloud</span></div>
+            <div id="login-sentence"><span>Create new account</span></div>
+
+            <div id="login-username" class="my-form-content">
+                <input id="username-input" name="username" type="text" placeholder=" ">
+
+
+
+
+                <label for="username" class="label-name">
+                    <span class="content-name">Username</span>
+                </label>
+            </div>
+            <div id="login-firstname" class="my-form-content">
+                 <input id="firstname-input"  name="firstname" type="text" placeholder=" ">
+                  <label for="firstname" class="label-name">
+                    <span class="content-name">Firstname</span>
+                </label>
+            </div>
+              <div id="login-lastname" class="my-form-content">
+                 <input id="lastname-input"  name="lastname" type="text" placeholder=" ">
+                  <label for="lastname" class="label-name">
+                    <span class="content-name">Lastname</span>
+                </label>
+            </div>
+              <div id="login-email" class="my-form-content">
+                 <input id="email-input"  name="email" type="text" placeholder=" ">
+                  <label for="email" class="label-name">
+                    <span class="content-name">Email</span>
+                </label>
+            </div>
+              <div id="login-password" class="my-form-content">
+                 <input id="password-input"  name="password" type="password" placeholder=" ">
+                  <label for="password" class="label-name">
+                    <span class="content-name">Password</span>
+                </label>
+            </div>
+
+              <input  name="avatar" type="text" value=""  style="display:none">
+             <input  name="phone" type="number" value="undefined" style="display:none">
+             <input  name="bio" type="text" value="undefined"  style="display:none">
+
+            <div id="login-submit"><button id="submit-input" type="submit" class="btn btn-info">Sign Up</button></div>
+        </div>
+
+        </form>
+        <div class="container form-navigator">Already have an account? <a href="/login" style="color:white">Login</a></div>
+    </div>
+
+
+
+
+            <script src="/loader.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

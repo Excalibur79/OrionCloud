@@ -1,0 +1,325 @@
+body
+{
+  background-color:#09B7D0 ;
+
+}
+
+.flexbox
+{
+    display:flex;
+ /*  border:2px solid red;*/
+     background: rgba(33, 47, 61, 0.5);
+    flex-direction:column;
+    margin:0 auto;
+    width:406px;
+    height:400px;
+    padding:10px;
+    justify-content:space-around;
+
+}
+.flexbox div
+{
+    flex:1;
+  /* border:2px dotted black;*/
+
+    margin:6px;
+}
+#login-title
+{
+
+
+    font-family: 'Prompt', sans-serif;
+    font-size:200%;
+    margin:0 auto;
+
+}
+.dank
+{
+     background: rgba(208, 211, 212 , 0.8);
+     padding-left:5px;
+}
+.cloud
+{
+
+       color:#2E86C1 ;
+        background: rgba(33, 47, 61, 0.7);
+        padding-right:5px;
+
+}
+#login-sentence
+{
+    font-family: 'Noto Sans', sans-serif;
+    margin:0 auto;
+    color:white;
+
+
+
+
+
+
+}
+#login-sentence span
+{
+    position:relative;
+    top:30px;
+}
+#login-username
+{
+
+    margin:0 auto;
+}
+#login-password
+{
+
+    margin:0 auto;
+}
+
+#login-submit
+{
+    margin:0 auto;
+}
+#username-input
+{
+    background: rgba(33, 47, 61, 0);
+    margin-top:0px;
+    height:60px;
+    border-top:0px;
+    border-right:0px;
+    border-left:0px;
+    padding-top:10px;
+    border-color:white;
+    border:none;
+    width:100%;
+    outline:none;
+    color:white;
+
+}
+#password-input
+{    background: rgba(33, 47, 61, 0);
+     margin-top:0px;
+    height:60px;
+   /* border-top:0px;
+    border-right:0px;
+    border-left:0px;*/
+    padding-top:10px;
+    border-color:white;
+    border:none;
+    width:100%;
+      outline:none;
+      color:white;
+}
+.my-form-content
+{
+    overflow:hidden;
+}
+#submit-input
+{
+    margin-top:20px;
+    border-radius:20px;
+    width:130px;
+
+
+}
+.my-form-content label
+{
+
+border-bottom:1px solid black;
+position:relative;
+top:-60px;
+width:100%;
+height:65%;
+pointer-events:none;
+color:white;
+}
+
+.my-form-content label::after
+{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+border-bottom:3px solid #09B7D0 ;
+bottom:-1px;
+transform:translate(-100%);
+transition:all 0.3s ease;
+
+}
+.content-name
+{
+position:absolute;
+top:25px;
+transition: all 0.3s ease;
+}
+
+
+
+
+
+#login-username input:focus + .label-name .content-name,
+#login-username input:not(:placeholder-shown) + .label-name .content-name
+{
+    transform:translateY(-140%);
+    font-size:14px;
+    color:#09B7D0 ;
+
+}
+    #login-username input:focus + .label-name::after,
+    #login-username input:not(:placeholder-shown) + .label-name::after
+    {
+        transform:translateX(0%);
+    }
+
+
+
+#login-password input:focus + .label-name .content-name,
+#login-password input:not(:placeholder-shown) + .label-name .content-name
+
+{
+        transform:translateY(-140%);
+         font-size:14px;
+    color:#09B7D0 ;
+}
+
+     #login-password input:focus + .label-name::after,
+        #login-password input:not(:placeholder-shown) + .label-name::after
+        {
+            transform:translateX(0%);
+        }
+
+
+
+
+
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+}
+
+
+
+
+.my-container
+{
+   /* border:2px solid blue;*/
+    margin-top:175px;
+}
+
+
+.form-navigator
+{
+   /*border:2px solid red;*/
+    width:30%;
+    margin-top:10px;
+    color:black;
+    font-size:130%;
+    transition:all 0.3s ease;
+}
+
+.error-flash
+{
+     border:0.5px solid #E74C3C ;
+    width:640px;
+   padding:10px;
+   margin-top:10px;
+
+   background-color:#FADBD8  ;
+   border-radius:6px;
+   color:#E74C3C  ;
+   transition:all 0.3s ease;
+}
+
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('pageloader.gif') 50% 50% no-repeat rgb(251, 252, 252 );
+    opacity: 1;
+}
+
+
+
+
+@media(max-width:768px)
+{
+    .form-navigator
+    {
+        width:100%;
+    }
+}
+@media(max-width:572px)
+{
+      .error-flash
+    {
+        width:90%;
+    }
+}
+
+
+@media(max-width:452px)
+{
+    .flexbox
+    {
+        width:auto;
+
+
+    }
+    .my-container
+   {
+        width:auto;
+
+      margin-top:140px;
+
+
+
+   }
+}
+@media(max-width:414px)
+{
+    .my-container
+    {
+      margin-top:175px;
+
+    }
+}
+@media(max-width:411px)
+{
+    .my-container
+    {
+      margin-top:190px;
+
+    }
+     .loader
+    {
+            background-size:120px 120px;
+    }
+}
+@media(max-width:375px)
+{
+    .my-container
+    {
+      margin-top:150px;
+
+    }
+}
+@media(max-width:360px)
+{
+    .my-container
+    {
+      margin-top:130px;
+
+    }
+}
+
