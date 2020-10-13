@@ -132,7 +132,7 @@ app.get("/posts/search",function(req,res)
     search=search.concat("#");
 
     var array=[];
-    var g=-1;
+    var g= -1;
     for(var i=0;i<search.length;i++)
     {
         if((search.charAt(i)=="+")||(search.charAt(i)=="#"))
